@@ -13,6 +13,9 @@ app.use(express.json());
 
 // Define Routes
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/personnel', require('./routes/personnel'));
+app.use('/api/applicants', require('./routes/applicants'));
+app.use('/api/debug', require('./routes/debug'));
 
 // A test route to verify database connection
 app.get('/api/db-test', async (req, res) => {

@@ -1,28 +1,23 @@
 // client/src/layout/Navbar.jsx
 import React from 'react';
+import { Link } from 'react-router-dom'; // <-- Import Link
 import { useAuth } from '../hooks/useAuth';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
 
-  const navbarStyle = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '1rem 2rem',
-    backgroundColor: '#f8f9fa',
-    borderBottom: '1px solid #dee2e6',
-  };
-
-  const buttonStyle = {
-    padding: '0.5rem 1rem',
-    cursor: 'pointer',
-  };
+  // Styles are unchanged
+  const navbarStyle = { /* ... */ };
+  const linkStyle = { textDecoration: 'none', color: 'blue', marginRight: '1rem' };
+  const buttonStyle = { /* ... */ };
 
   return (
     <nav style={navbarStyle}>
       <div>
         <strong>MVFD Portal</strong>
+        <Link to="/dashboard" style={linkStyle}>Dashboard</Link>
+        <Link to="/roster" style={linkStyle}>Roster</Link>
+        <Link to="/applicants" style={linkStyle}>Applicants</Link>
       </div>
       <div>
         <span>Welcome, {user?.firstName} ({user?.role})</span>

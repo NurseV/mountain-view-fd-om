@@ -9,6 +9,9 @@ import MainLayout from './layout/MainLayout';
 // Pages
 import LoginPage from './components/LoginPage';
 import DashboardPage from './components/DashboardPage';
+import RosterPage from './components/RosterPage';
+import PersonnelProfilePage from './components/PersonnelProfilePage';
+import ApplicantTrackingPage from './components/ApplicantTrackingPage';
 
 const App = () => {
   const { isAuthenticated } = useAuth();
@@ -16,18 +19,19 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        {/* If not authenticated, all routes redirect to /login */}
         {!isAuthenticated ? (
           <>
             <Route path="/login" element={<LoginPage />} />
             <Route path="*" element={<Navigate to="/login" />} />
           </>
         ) : (
-          /* If authenticated, all routes are wrapped in MainLayout */
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Navigate to="/dashboard" />} />
             <Route path="dashboard" element={<DashboardPage />} />
-            {/* All other future protected routes will go here */}
+            <Route path="roster" element={<RosterPage />} />
+            {/* FIX: Add the missing routes back */}
+            <Route path="applicants" element={<ApplicantTrackingPage />} />
+            <Route path="personnel/:id" element={<PersonnelProfilePage />} />
             <Route path="*" element={<Navigate to="/dashboard" />} />
           </Route>
         )}

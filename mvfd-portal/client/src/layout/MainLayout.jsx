@@ -8,7 +8,7 @@ const MainLayout = () => {
     <div>
       <Navbar />
       <main style={{ padding: '2rem' }}>
-        <Outlet /> {/* Child routes will be rendered here */}
+        <Outlet /> {/* Correct: Only the Outlet placeholder is needed here */}
       </main>
     </div>
   );
